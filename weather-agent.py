@@ -64,23 +64,28 @@ def extract_weather_data(data):
     }
     return weather_data
 
-# Load environment variables from .env file
-load_dotenv()
+def main():
+    # Load environment variables from .env file
+    load_dotenv()
 
-api_key = os.getenv('API_KEY')
-lat = -8.838333
-lon = 13.234444
+    api_key = os.getenv('API_KEY')
+    lat = -8.838333
+    lon = 13.234444
 
-url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}"
+    url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}"
 
-response = requests.get(url)
+    response = requests.get(url)
 
-if (response.status_code == 200):
-    data = response.json()
-    weather_data = extract_weather_data(data)
-    report = generate_report(weather_data)
-    filename = f"weather_report_{datetime.now().strftime('%Y-%m-%d')}.txt"
-    with open(filename, "w") as file:
-        file.write(report);
-else:
-    print("Error:", response.status_code)
+    if (response.status_code == 200):
+        data = response.json()
+        weather_data = extract_weather_data(data)
+        report = generate_report(weather_data)
+        filename = f"weather_report_{datetime.now().strftime('%Y-%m-%d')}.txt"
+        with open(filename, "w") as file:
+            file.write(report);
+    else:
+        print("Error:", response.status_code)
+
+
+if __name__ == "__main__":
+    main()
