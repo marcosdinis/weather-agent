@@ -73,5 +73,6 @@ if (response.status_code == 200):
     print(temperature_analysis(weather_data['temperature']))
     print(wind_analysis(weather_data['wind_speed']))
     print(claude_analysis(weather_data['cloudiness']))
+    print(rain_analysis(weather_data['description']))
 else:
     print("Error:", response.status_code)
