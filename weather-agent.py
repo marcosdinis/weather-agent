@@ -22,6 +22,15 @@ def wind_analysis(wind_speed):
     else:
         return "Vento forte, evite guarda-chuvas e proteja objectos leves."
 
+def claude_analysis(cloudiness):
+    if cloudiness < 25:
+        return "Céu limpo, use protecção solar."
+    elif 25 <= cloudiness < 75:
+        return "Céu parcialmente nublado."
+    else:
+        return "Céu encoberto, sem necessidade de protecção solar."
+    
+
 def extract_weather_data(data): 
     weather_data = {
         "temperature": temperature_to_celsius(data["main"]["temp"]),
@@ -57,5 +66,6 @@ if (response.status_code == 200):
     print("\nAnálise de vestimenta:")
     print(temperature_analysis(weather_data['temperature']))
     print(wind_analysis(weather_data['wind_speed']))
+    print(claude_analysis(weather_data['cloudiness']))
 else:
     print("Error:", response.status_code)
