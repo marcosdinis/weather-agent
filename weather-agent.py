@@ -13,10 +13,10 @@ def generate_report(weather_data):
     report += f"•Nuvens: {weather_data['cloudiness']}%\n"
     report += f"•Descrição: {weather_data['description']}\n"
     report += "\nAnálise:\n"
-    report += f"*Análise de vestimenta: {temperature_analysis(weather_data['temperature'])}\n"
-    report += f"*Análise do vento: {wind_analysis(weather_data['wind_speed'])}\n"
-    report += f"*Análise das nuvens: {claude_analysis(weather_data['cloudiness'])}\n"
-    report += f"*Análise da chuva: {rain_analysis(weather_data['description'])}\n"
+    report += f"•Análise de vestimenta: {temperature_analysis(weather_data['temperature'])}\n"
+    report += f"•Análise do vento: {wind_analysis(weather_data['wind_speed'])}\n"
+    report += f"•Análise das nuvens: {claude_analysis(weather_data['cloudiness'])}\n"
+    report += f"•Análise da chuva: {rain_analysis(weather_data['description'])}\n"
     return report
 
 def temperature_to_celsius(kelvin):
