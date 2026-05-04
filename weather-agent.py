@@ -65,7 +65,7 @@ if (response.status_code == 200):
     print("Dados meteorológicos atuais:")
     print(f"•Temperatura: {weather_data['temperature']}°C")
     print(f"•Sensação térmica: {weather_data['wind_chill']}°C")
-    print(f"•Umidade: {weather_data['humidity']}%")
+    print(f"•Humidade: {weather_data['humidity']}%")
     print(f"•Velocidade do vento: {weather_data['wind_speed']} m/s")
     print(f"•Nuvens: {weather_data['cloudiness']}%")
     print(f"•Descrição: {weather_data['description']}")
