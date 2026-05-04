@@ -17,7 +17,7 @@ def temperature_analysis(temperature):
 def wind_analysis(wind_speed):
     if wind_speed < 2:
         return "Vento calmo, sem impacto nas actividades ao ar livre."
-    elif 2 <= wind_speed < 5:
+    elif 2 <= wind_speed <= 8:
         return "Vento moderado, segure objectos leves ao ar livre."
     else:
         return "Vento forte, evite guarda-chuvas e proteja objectos leves."
