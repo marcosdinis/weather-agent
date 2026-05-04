@@ -14,7 +14,14 @@ def temperature_analysis(temperature):
     else:
         return "Vista roupas leves, pois a temperatura está alta."
     
-    
+def wind_analysis(wind_speed):
+    if wind_speed < 2:
+        return "Vento calmo, sem impacto nas actividades ao ar livre."
+    elif 2 <= wind_speed < 5:
+        return "Vento moderado, segure objectos leves ao ar livre."
+    else:
+        return "Vento forte, evite guarda-chuvas e proteja objectos leves."
+
 def extract_weather_data(data): 
     weather_data = {
         "temperature": temperature_to_celsius(data["main"]["temp"]),
@@ -49,5 +56,6 @@ if (response.status_code == 200):
     print(f"•Descrição: {weather_data['description']}")
     print("\nAnálise de vestimenta:")
     print(temperature_analysis(weather_data['temperature']))
+    print(wind_analysis(weather_data['wind_speed']))
 else:
     print("Error:", response.status_code)
