@@ -31,7 +31,7 @@ def claude_analysis(cloudiness):
         return "Céu encoberto, sem necessidade de protecção solar."
     
 def rain_analysis(description):
-    if "Rain" or "Drizzle" or "Thunderstorm" in description:
+    if "rain" in description or "drizzle" in description or "thunderstorm" in description:
         return "Leve guarda-chuva."
     else:
         return "Sem precipitação prevista."
