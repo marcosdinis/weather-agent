@@ -1,7 +1,23 @@
 import requests
 import os
 from dotenv import load_dotenv
+from datetime import datetime
 
+
+def generate_report(weather_data):
+    report = f"Relatório Meteorológico - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+    report += f"•Temperatura: {weather_data['temperature']}°C\n"
+    report += f"•Sensação térmica: {weather_data['wind_chill']}°C\n"
+    report += f"•Humidade: {weather_data['humidity']}%\n"
+    report += f"•Velocidade do vento: {weather_data['wind_speed']} m/s\n"
+    report += f"•Nuvens: {weather_data['cloudiness']}%\n"
+    report += f"•Descrição: {weather_data['description']}\n"
+    
+    report += f"*Análise de vestimenta: {temperature_analysis(weather_data['temperature'])}\n"
+    report += f"*Análise do vento: {wind_analysis(weather_data['wind_speed'])}\n"
+    report += f"*Análise das nuvens: {claude_analysis(weather_data['cloudiness'])}\n"
+    report += f"*Análise da chuva: {rain_analysis(weather_data['description'])}\n"
+    return report
 
 def temperature_to_celsius(kelvin):
     return round(kelvin - 273.15, 1)
@@ -62,17 +78,9 @@ response = requests.get(url)
 if (response.status_code == 200):
     data = response.json()
     weather_data = extract_weather_data(data)
-    print("Dados meteorológicos atuais:")
-    print(f"•Temperatura: {weather_data['temperature']}°C")
-    print(f"•Sensação térmica: {weather_data['wind_chill']}°C")
-    print(f"•Humidade: {weather_data['humidity']}%")
-    print(f"•Velocidade do vento: {weather_data['wind_speed']} m/s")
-    print(f"•Nuvens: {weather_data['cloudiness']}%")
-    print(f"•Descrição: {weather_data['description']}")
-    print("\nAnálise de vestimenta:")
-    print(temperature_analysis(weather_data['temperature']))
-    print(wind_analysis(weather_data['wind_speed']))
-    print(claude_analysis(weather_data['cloudiness']))
-    print(rain_analysis(weather_data['description']))
+    report = generate_report(weather_data)
+    filename = f"weather_report_{datetime.now().strftime('%Y-%m-%d')}.txt"
+    with open(filename, "w") as file:
+        file.write(report);
 else:
     print("Error:", response.status_code)
