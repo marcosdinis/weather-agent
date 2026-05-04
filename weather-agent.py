@@ -52,8 +52,8 @@ def extract_weather_data(data):
 load_dotenv()
 
 api_key = os.getenv('API_KEY')
-lat = -8.923685505546363
-lon = 13.183318976842212
+lat = -8.838333
+lon = 13.234444
 
 url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}"
 
