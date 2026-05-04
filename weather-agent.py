@@ -30,6 +30,12 @@ def claude_analysis(cloudiness):
     else:
         return "Céu encoberto, sem necessidade de protecção solar."
     
+def rain_analysis(description):
+    if "Rain" or "Drizzle" or "Thunderstorm" in description:
+        return "Leve guarda-chuva."
+    else:
+        return "Sem precipitação prevista."
+    
 
 def extract_weather_data(data): 
     weather_data = {
