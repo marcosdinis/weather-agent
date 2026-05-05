@@ -114,19 +114,19 @@ A report file named `weather_report_YYYY-MM-DD.txt` will be created in the proje
 ## Example output
 
 ```
-Relatório Meteorológico - 2026-05-04 12:38:44
-•Temperatura: 28.0°C
-•Sensação térmica: 29.6°C
-•Humidade: 61%
-•Velocidade do vento: 5.7 m/s
-•Nuvens: 40%
-•Descrição: scattered clouds
+Weather Report - 2026-05-04 12:38:44
+•Temperature: 28.0°C
+•Feels like: 29.6°C
+•Humidity: 61%
+•Wind speed: 5.7 m/s
+•Cloudiness: 40%
+•Description: scattered clouds
 
-Análise:
-•Análise de vestimenta: Vista roupas leves, pois a temperatura está alta.
-•Análise do vento: Vento moderado, segure objectos leves ao ar livre.
-•Análise das nuvens: Céu parcialmente nublado.
-•Análise da chuva: Sem precipitação prevista.
+Analysis:
+•Clothing: Hot conditions — opt for light, breathable clothing.
+•Wind: Light to moderate breeze — keep an eye on loose objects.
+•Cloud cover: Partly cloudy — a mix of sun and clouds expected.
+•Rain: Dry conditions expected — no umbrella needed.
 ```
 
 ---

@@ -5,18 +5,18 @@ from datetime import datetime
 
 
 def generate_report(weather_data):
-    report = f"Relatório Meteorológico - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
-    report += f"•Temperatura: {weather_data['temperature']}°C\n"
-    report += f"•Sensação térmica: {weather_data['wind_chill']}°C\n"
-    report += f"•Humidade: {weather_data['humidity']}%\n"
-    report += f"•Velocidade do vento: {weather_data['wind_speed']} m/s\n"
-    report += f"•Nuvens: {weather_data['cloudiness']}%\n"
-    report += f"•Descrição: {weather_data['description']}\n"
-    report += "\nAnálise:\n"
-    report += f"•Análise de vestimenta: {temperature_analysis(weather_data['temperature'])}\n"
-    report += f"•Análise do vento: {wind_analysis(weather_data['wind_speed'])}\n"
-    report += f"•Análise das nuvens: {claude_analysis(weather_data['cloudiness'])}\n"
-    report += f"•Análise da chuva: {rain_analysis(weather_data['description'])}\n"
+    report = f"Weather Report - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+    report += f"•Temperature: {weather_data['temperature']}°C\n"
+    report += f"•Feels like: {weather_data['wind_chill']}°C\n"
+    report += f"•Humidity: {weather_data['humidity']}%\n"
+    report += f"•Wind speed: {weather_data['wind_speed']} m/s\n"
+    report += f"•Cloudiness: {weather_data['cloudiness']}%\n"
+    report += f"•Description: {weather_data['description']}\n"
+    report += "\nAnalysis:\n"
+    report += f"•Clothing: {temperature_analysis(weather_data['temperature'])}\n"
+    report += f"•Wind: {wind_analysis(weather_data['wind_speed'])}\n"
+    report += f"•Cloud cover: {cloud_analysis(weather_data['cloudiness'])}\n"
+    report += f"•Rain: {rain_analysis(weather_data['description'])}\n"
     return report
 
 def temperature_to_celsius(kelvin):
@@ -24,33 +24,33 @@ def temperature_to_celsius(kelvin):
 
 def temperature_analysis(temperature):
     if temperature < 18:
-        return "Vista um agasalho, pois a temperatura está baixa."
+        return "Cold conditions — layer up before heading out."
     elif 18 <= temperature < 28:
-        return "Vista uma blusa, pois a temperatura está amena."
+        return "Comfortable temperature — a light top should do."
     else:
-        return "Vista roupas leves, pois a temperatura está alta."
-    
+        return "Hot conditions — opt for light, breathable clothing."
+
 def wind_analysis(wind_speed):
     if wind_speed < 2:
-        return "Vento calmo, sem impacto nas actividades ao ar livre."
+        return "Virtually no wind — ideal conditions outdoors."
     elif 2 <= wind_speed <= 8:
-        return "Vento moderado, segure objectos leves ao ar livre."
+        return "Light to moderate breeze — keep an eye on loose objects."
     else:
-        return "Vento forte, evite guarda-chuvas e proteja objectos leves."
+        return "Strong winds — secure loose items and skip the umbrella."
 
-def claude_analysis(cloudiness):
+def cloud_analysis(cloudiness):
     if cloudiness < 25:
-        return "Céu limpo, use protecção solar."
+        return "Mostly clear skies — don't forget your sunscreen."
     elif 25 <= cloudiness < 75:
-        return "Céu parcialmente nublado."
+        return "Partly cloudy — a mix of sun and clouds expected."
     else:
-        return "Céu encoberto, sem necessidade de protecção solar."
-    
+        return "Heavily overcast — sunscreen not required."
+
 def rain_analysis(description):
     if "rain" in description or "drizzle" in description or "thunderstorm" in description:
-        return "Leve guarda-chuva."
+        return "Precipitation likely — bring an umbrella."
     else:
-        return "Sem precipitação prevista."
+        return "Dry conditions expected — no umbrella needed."
     
 
 def extract_weather_data(data): 
@@ -82,7 +82,7 @@ def main():
         report = generate_report(weather_data)
         filename = f"weather_report_{datetime.now().strftime('%Y-%m-%d')}.txt"
         with open(filename, "w") as file:
-            file.write(report);
+            file.write(report)
     else:
         print("Error:", response.status_code)
 
